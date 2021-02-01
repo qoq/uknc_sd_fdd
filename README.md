@@ -59,56 +59,14 @@ SD Card must have one FAT-32 partition. Directory structure:
 |Command|Parameters (offset from addr 116000)|Operation|
 |-------|------------------------------------|---------|
 |0      | None             		     |SD-card reset & image files remapping|
-|-------|------------------------------------|---------|
-|1	| Input:                                    
-	    02: Disk type (1..3)            
-            03: Disk No (top bit = disk side)
-            04: Track No
-            05: Sector No
-          Return:
-            00: Error code (0==OK)
-            06-07: data_size (bytes read)
-            08:   read_bytes[data_size]      |Read sector (512b)|
-|-------|------------------------------------|---------|
-|2	| Input:                                    
-	    02: Disk type (1..3)            
-            03: Disk No (top bit = disk side)
-            04: Track No
-            05: Sector No
-            06-07: data_size (bytes to write)
-            08:   write_bytes[data_size]
-          Return:
-            00: Error code (0==OK)	     |Write sector (512b)|
-|-------|------------------------------------|---------|
-|3	| Input:                                    
-	    02: Disk type (1..3)            
-            03: Disk No (top bit = disk side)
-            04: Track No
-            06-07: filler bytes
-          Return:
-            00: Error code (0==OK)	     |Format track|
-|-------|------------------------------------|---------|
-|4	| Input:                                    
-            02:   data size in words
-            08:   log_data[data_size]        | Write log entry to log.txt|
-|-------|------------------------------------|---------|
+|1	| Input:<br />02: Disk type (1..3)<br />02: Disk type (1..3)<br />03: Disk No (top bit = disk side)<br />04: Track No<br />05: Sector No<br />06-07: data_size (bytes read)<br />08:   read_bytes[data_size]|Read sector (512b)|
+|2	| Input:<br />02: Disk type (1..3)<br />03: Disk No (top bit = disk side)<br />04: Track No<br />05: Sector No<br />06-07: data_size (bytes to write)<br />08:   write_bytes[data_size]<br />Return:<br />00: Error code (0==OK)<br />|Write sector (512b)|
+|3	| Input:<br />02: Disk type (1..3)<br />03: Disk No (top bit = disk side)<br />04: Track No<br />06-07: filler bytes<br />Return:<br />00: Error code (0==OK)<br />|Format track|
+|4	| Input:<br />02:   data size in words<br />08:   log_data[data_size]| Write log entry to log.txt|
 |5	| None                               |Delay 1ms|
-|-------|------------------------------------|---------|
-|6	| Return:                                   
-            00-01:  data size
-            03:   map_txt_data[data_size]    |Read map.txt (max 512 bytes)|
-|-------|------------------------------------|---------|
-|7	| Input:                                    
-            00-01:  data size
-            03:   map_txt_data[data_size]    |Write map.txt (max 512 bytes)|
-|-------|------------------------------------|---------|
-|8	| Input:                                    
-            00-01:  Start file index
-            02-03:  num files to read
-          Return:
-            00-01:  bytes read
-            02-03:  file count
-               04: file names[file_count]   <- zero-terminated strings|Read disk directory (max 64 records at a time)|
+|6	| Return:<br />00-01:  data size<br />03:   map_txt_data[data_size]|Read map.txt (max 512 bytes)|
+|7	| Input:<br />00-01:  data size<br />03:   map_txt_data[data_size]|Write map.txt (max 512 bytes)|
+|8	| Input:<br />00-01:  Start file index<br />02-03:  num files to read<br />Return:<br />00-01:  bytes read<br />02-03:  file count<br />04: file names[file_count]   <- zero-terminated strings|Read disk directory (max 64 records at a time)|
 |-------|------------------------------------|---------|
 
 #Процесс загрузки и программный интерфейс со стороны ЦП УКНЦ.
