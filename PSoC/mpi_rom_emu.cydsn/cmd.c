@@ -10,6 +10,7 @@
  * ========================================
 */
 #include <stdint.h>
+#include <stdio.h>
 #include <project.h>
 #include "sd/ff.h"
 
@@ -27,6 +28,7 @@ FRESULT map_image(uint8_t disk_n, FIL *img_file);
 void read_map(void);
 #define logging 1
 
+void log_to_file(char *s);
 
 void ls_files(uint8_t *buf, int file_number, int files)
 {
@@ -95,6 +97,10 @@ FRESULT rc;
     sides=1;
     tracks=80;
     static int log_N;
+    
+//sprintf(tmpb,"CMD: %d, dt:%d, d#:%d, h:%d, t:%d, s:%d \n", CMD,D_TYPE,DISK_N,SIDE,TRACK,SECTOR);
+//log_to_file(tmpb);
+    
     if(CMD==0)
     {
         reinit_fs();

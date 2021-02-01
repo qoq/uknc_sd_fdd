@@ -18,6 +18,7 @@ typedef uint16_t WCHAR;
 typedef int32_t	LONG_;
 typedef uint32_t ULONG;
 typedef uint32_t DWORD;
+typedef DWORD LBA_t;
 
 #endif
 

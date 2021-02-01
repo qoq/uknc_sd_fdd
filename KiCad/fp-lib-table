@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name unkc_fdd_sds)(type KiCad)(uri ${KIPRJMOD}/unkc_fdd_sds.pretty)(options "")(descr ""))
+)
