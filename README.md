@@ -1,3 +1,5 @@
 # uknc_sd_fdd
-Контроллер дисковода для УКНЦ (МС0511), использующий образы дисков на SD-карте.
-Сайт проекта: http://y-salnikov.github.io/uknc_sd_fdd/
+Floppy drive emulator board for Soviet PDP-11 computer Elektronica MC-0511 (УКНЦ). 
+
+Orginal project site:
+http://y-salnikov.github.io/uknc_sd_fdd/
